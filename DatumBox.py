@@ -1,9 +1,9 @@
-from urllib2 import Request, urlopen
-from urllib import urlencode
+from urllib.request import Request, urlopen
+
+from urllib.parse import urlencode
 import json
 
 class DatumBox():
-	
 	base_url = "http://api.datumbox.com/1.0/"
 	
 	def __init__(self, api_key):
@@ -78,9 +78,11 @@ class DatumBox():
 		
 	def _send_request(self, full_url, params_dict):
 		params_dict['api_key'] = self.api_key
-		request = Request(url=full_url, data=urlencode(params_dict))
+
+		q = urlencode(params_dict).encode('UTF-8')
+		request = Request(url=full_url, data=q)
 		f = urlopen(request)
-		response = json.loads(f.read())
+		response = json.loads(f.read().decode('UTF-8'))
 		
 		
 		if "error" in response['output']:

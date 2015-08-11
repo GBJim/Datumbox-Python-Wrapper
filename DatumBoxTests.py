@@ -114,6 +114,12 @@ datum_box = DatumBox(API_KEY)
 bad_datum_box = DatumBox("This-API-key-is-not-valid-(hopefully)")
     
 
+datum_box.twitter_sentiment_analysis("I am the smartest man on earth!")
+
+
+
+'''
+
 class TestSentimentAnalysis(unittest.TestCase):
    
     def test_positive_review(self):
@@ -127,7 +133,7 @@ class TestSentimentAnalysis(unittest.TestCase):
         
 class TestTwitterSentimentAnalysis(unittest.TestCase):
     def test_positive_tweet(self):
-        self.assertEqual(datum_box.twitter_sentiment_analysis(positive_tweet), "positive")
+        self.assertEqual(, "positive")
         
     def test_negative_tweet(self):
         self.assertEqual(datum_box.twitter_sentiment_analysis(negative_tweet), "negative")
@@ -196,3 +202,4 @@ class TestDocumentSimilarity(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+'''
